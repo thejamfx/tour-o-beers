@@ -17,10 +17,11 @@
 - List page listing all the beers (possibly with some details)
 - Detail page listing the details of a single beer
 - “Add beer” page to add any kind of good (Czech) beer
-- Actions - you should be able to
-- Add a beer, its description and a picture (yes, picture is mandatory)
-- Remove a beer
-- Navigate easily between the screens
+- Actions
+    - you should be able to
+        - Add a beer, its description and a picture (yes, picture is mandatory)
+        - Remove a beer
+        - Navigate easily between the screens
 
 ####It’s up to you to
 - Create the design (should be basic)
