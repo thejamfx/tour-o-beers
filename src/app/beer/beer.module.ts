@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatStepperModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-import { BeerDetailsComponent } from './beerDetails/beerDetails.component';
+import { BeerListComponent } from './beerList/beerList.component';
+import { BeerFormComponent } from './beerForm/beerForm.component';
+import { BeerDetailComponent } from './beerDetail/beerDetail.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule],
-  exports: [BeerDetailsComponent],
-  declarations: [BeerDetailsComponent]
+  imports: [SharedModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule],
+  exports: [BeerListComponent],
+  declarations: [BeerListComponent, BeerFormComponent, BeerDetailComponent]
 })
 export class BeerModule { }

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Beer } from '../beer.types';
 
 @Component({
-  selector: 'beer-details',
-  templateUrl: './beerDetails.component.html',
-  styleUrls: ['./beerDetails.component.css']
+  selector: 'beer-detail',
+  templateUrl: './beerDetail.component.html',
+  styleUrls: ['./beerDetail.component.css']
 })
-export class BeerDetailsComponent implements OnInit {
+export class BeerDetailComponent implements OnInit {
     private beer: Beer;
     constructor () {}
     public ngOnInit () {

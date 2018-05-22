@@ -1,13 +1,13 @@
-import { HeroModule } from './hero.module';
+import { BeerModule } from './beer.module';
 
-describe('HeroModule', () => {
-  let heroModule: HeroModule;
+describe('BeerModule', () => {
+    let beerModule: BeerModule;
 
-  beforeEach(() => {
-    heroModule = new HeroModule();
-  });
+    beforeEach(() => {
+        beerModule = new BeerModule();
+    });
 
-  it('should create an instance', () => {
-    expect(heroModule).toBeTruthy();
-  });
+    it('should create an instance', () => {
+        expect(beerModule).toBeTruthy();
+    });
 });
