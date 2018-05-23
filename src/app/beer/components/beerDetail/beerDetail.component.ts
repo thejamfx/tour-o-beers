@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Beer } from '../beer.types';
+import { Beer } from '../../beer.types';
 
 @Component({
   selector: 'beer-detail',
@@ -12,7 +12,8 @@ export class BeerDetailComponent implements OnInit {
     public ngOnInit () {
         this.beer = {
             id: 'beer id',
-            name: 'beer name'
+            name: 'beer name',
+            brewery: 'unknown'
         };
     }
     public onNameChange ($event: any): void {

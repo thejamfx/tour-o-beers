@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatStepperModule, MatFormFieldModule, MatInputModule } from '@angular/material';
-import { BeerListComponent } from './beerList/beerList.component';
-import { BeerFormComponent } from './beerForm/beerForm.component';
-import { BeerDetailComponent } from './beerDetail/beerDetail.component';
+import { MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule } from '@angular/material';
+import { BeerListComponent } from './components/beerList/beerList.component';
+import { BeerFormComponent } from './components/beerForm/beerForm.component';
+import { BeerDetailComponent } from './components/beerDetail/beerDetail.component';
+import { BeerService } from './services/beerService.service';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  imports: [SharedModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule],
+  imports: [SharedModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule],
   exports: [BeerListComponent],
   declarations: [BeerListComponent, BeerFormComponent, BeerDetailComponent]
 })

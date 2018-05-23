@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
-import { DatatableComponent } from './datatable/datatable.component';
-import { MatTableModule, MatPaginatorModule } from '@angular/material';
+import { DatatableComponent } from './components/datatable/datatable.component';
+import {
+    MatButtonModule, MatTableModule, MatIconModule, MatPaginatorModule, MatMenuModule, MatSortModule, MatCheckboxModule
+} from '@angular/material';
 
 @NgModule({
-  imports: [
-    MatTableModule, MatPaginatorModule
-  ],
-  exports: [DatatableComponent],
-  declarations: [DatatableComponent]
+    imports: [
+        MatButtonModule, MatTableModule, MatIconModule, MatPaginatorModule, MatMenuModule, MatCheckboxModule
+    ],
+    exports: [DatatableComponent],
+    declarations: [DatatableComponent]
 })
 export class SharedModule { }
