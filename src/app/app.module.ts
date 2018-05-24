@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { BeerModule } from './beer/beer.module';
+import { NavbarModule } from './navbar/navbar.module';
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [BrowserModule, BrowserAnimationsModule, CommonModule, BeerModule],
+    imports: [BrowserModule, BrowserAnimationsModule, CommonModule, NavbarModule, BeerModule],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
