@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { BeerService } from '../../services/beerService.service';
 import { Beer } from '../../beer.types';
+import { NotificationService } from '../../../shared/services/notificationService.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'beer-list',
@@ -8,16 +10,21 @@ import { Beer } from '../../beer.types';
     styleUrls: ['./beerList.component.css'],
     providers: [BeerService]
 })
-export class BeerListComponent implements OnInit {
+export class BeerListComponent implements OnInit, OnDestroy {
     private beers: any;
-    constructor (private beerService: BeerService) {}
-    public ngOnInit () {
+    private beersSubscription: Subscription;
+    constructor(private beerService: BeerService, private notificationService: NotificationService, private changeDetectorRef: ChangeDetectorRef) {}
+    public ngOnInit (): void {
         this.retrieveBeerList();
     }
+    public ngOnDestroy (): void {
+        this.beersSubscription.unsubscribe();
+    }
     private retrieveBeerList (): void {
-        this.beerService.loadBeers().then((beers: Beer[]) => {
-            this.beers = beers;
-            this.beers.paginator = null;
-        });
+        this.beersSubscription = this.beerService.loadBeers().subscribe(this.setBeerList.bind(this));
+    }
+    private setBeerList (beers: any): void {
+        this.beers = beers;
+        this.notificationService.addNotification('Beers loaded!');
     }
 }

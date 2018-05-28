@@ -5,3 +5,11 @@
 body {
     margin: 0px;
 }
+
+.mat-snack-bar-container.error {
+    background-color: #f44336;
+}
+
+.mat-snack-bar-container.success {
+    background-color: #44ca6c;
+}

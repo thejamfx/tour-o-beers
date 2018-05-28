@@ -1,12 +1,13 @@
 import { BeerModule } from '../beer.module';
 import { Injectable } from '@angular/core';
 import { Beer } from '../beer.types';
+import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class BeerService {
     constructor () {}
-    public async loadBeers (): Promise<Beer[]> {
-        return Promise.resolve([{
+    public loadBeers (): Observable<Beer[]> {
+        const beers = [{
             id: '1',
             name: 'Non Alcoholic Beer',
             brewery: 'Unknown'
@@ -34,6 +35,7 @@ export class BeerService {
             id: '7',
             name: 'Strongbow',
             brewery: 'Unknown'
-        }]);
+        }];
+        return of(beers);
     }
 }
