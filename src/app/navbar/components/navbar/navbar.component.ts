@@ -6,7 +6,6 @@ import { MatMenu } from '@angular/material';
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
     constructor () {}
-    ngOnInit () {}
 }

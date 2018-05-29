@@ -13,10 +13,10 @@
 
 ###Task:
 - Create an app with the following views:
-- Dashboard listing some selection of beers
-- List page listing all the beers (possibly with some details)
-- Detail page listing the details of a single beer
-- “Add beer” page to add any kind of good (Czech) beer
+    - Dashboard listing some selection of beers
+    - List page listing all the beers (possibly with some details)
+    - Detail page listing the details of a single beer
+    - “Add beer” page to add any kind of good (Czech) beer
 - Actions
     - you should be able to
         - Add a beer, its description and a picture (yes, picture is mandatory)
