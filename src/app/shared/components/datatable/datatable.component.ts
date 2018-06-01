@@ -1,5 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { Component, Input, OnChanges, SimpleChanges, ViewChild, AfterViewInit, ContentChildren, QueryList } from '@angular/core';
+import { MatPaginator, MatTableDataSource, MatColumnDef, MatTable, MatHeaderRowDef } from '@angular/material';
 import { DatatableService } from '../../services/datatableService.service';
 
 type SourceElements = {
@@ -12,15 +12,24 @@ type SourceElements = {
     styleUrls: ['./datatable.component.css'],
     providers: [DatatableService]
 })
-export class DatatableComponent implements OnChanges {
+export class DatatableComponent implements OnChanges, AfterViewInit {
     @Input() public source: MatTableDataSource<SourceElements>;
 
     @ViewChild(MatPaginator) private paginator: MatPaginator;
+    @ViewChild(MatTable) private table: MatTable<any>;
+
+    @ContentChildren(MatColumnDef) columnDefinitions: QueryList<MatColumnDef>;
 
     public dataSource: MatTableDataSource<SourceElements>;
-    public displayedColumns = ['checked', 'id', 'name', 'brewery'];
+    public displayedColumns = [];
 
     constructor (private datatableService: DatatableService) {}
+    public ngAfterViewInit () {
+        this.columnDefinitions.forEach((columnDefinition) => {
+            this.table.addColumnDef(columnDefinition);
+        });
+        setTimeout(() => this.displayedColumns = ['checked', 'name']);
+    }
     public ngOnChanges (changes: SimpleChanges) {
         if (changes.source.currentValue) {
             this.refreshDataSource(changes.source.currentValue);
@@ -28,6 +37,5 @@ export class DatatableComponent implements OnChanges {
     }
     private refreshDataSource (data: any) {
         this.dataSource = this.datatableService.createDataSourceFromData(data, this.paginator);
-        console.log(this.dataSource);
     }
 }
