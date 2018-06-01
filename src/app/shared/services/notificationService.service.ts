@@ -8,7 +8,7 @@ export class NotificationService {
     constructor (private matSnackBar: MatSnackBar) {}
     public addNotification (message: string, snackBarActionLabel: string = ''): void { 
         const snackBarOptions = this.buildSnackBarOptions();
-        this.matSnackBar.open(message, snackBarActionLabel, snackBarOptions);
+        setTimeout(() => this.matSnackBar.open(message, snackBarActionLabel, snackBarOptions));
     }
     private buildSnackBarOptions (): MatSnackBarConfig {
         return {
