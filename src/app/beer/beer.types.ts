@@ -1,5 +1,5 @@
 export type Beer = {
-    id: any,
+    id: string,
     name: string,
     brewery: string
 };

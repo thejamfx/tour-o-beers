@@ -6,10 +6,14 @@ import { BeerFormComponent } from './components/beerForm/beerForm.component';
 import { BeerDetailComponent } from './components/beerDetail/beerDetail.component';
 import { BeerService } from './services/beerService.service';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  imports: [SharedModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule, MatMenuModule, MatTableModule, MatCheckboxModule],
-  exports: [BeerListComponent],
-  declarations: [BeerListComponent, BeerFormComponent, BeerDetailComponent]
+    imports: [
+        SharedModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule,
+        MatMenuModule, MatTableModule, MatCheckboxModule, RouterModule
+    ],
+    exports: [BeerListComponent],
+    declarations: [BeerListComponent, BeerFormComponent, BeerDetailComponent]
 })
 export class BeerModule { }

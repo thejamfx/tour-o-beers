@@ -13,3 +13,7 @@ body {
 .mat-snack-bar-container.success {
     background-color: #44ca6c;
 }
+
+a {
+    text-decoration: none;
+}

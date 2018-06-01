@@ -24,6 +24,7 @@ export class BeerListComponent implements OnInit, OnDestroy {
         this.beersSubscription = this.beerService.loadBeers().subscribe(this.setBeerList.bind(this));
     }
     private setBeerList (beers: any): void {
+        console.log(beers);
         this.beers = beers;
         this.notificationService.addNotification('Beers loaded!');
     }

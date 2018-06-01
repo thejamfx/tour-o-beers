@@ -12,14 +12,6 @@ const routes: Routes = [
     { path: 'beers/detail/:id', component: BeerDetailComponent }
 ];
 
-interface CustomRoute extends Route {
-    label: string
-};
-const routeDefinitions: CustomRoute[] = [
-    { path: 'dashboard', label: 'Dashboard', component: DashboardComponent },
-    { path: 'beers/list', label: 'Beers', component: BeerListComponent }
-];
-
 @NgModule({
     exports: [RouterModule],
     imports: [RouterModule.forRoot(routes)]
