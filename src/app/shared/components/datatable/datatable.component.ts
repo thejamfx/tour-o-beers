@@ -1,6 +1,6 @@
 import { 
     Component, Input, OnInit, OnChanges, SimpleChanges, ViewChild, AfterViewInit,
-    ContentChildren, QueryList, ChangeDetectorRef
+    ContentChildren, QueryList, ChangeDetectorRef, Output, EventEmitter
 } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatColumnDef, MatTable, MatHeaderRowDef, PageEvent } from '@angular/material';
 import { DatatableService } from '../../services/datatableService.service';
@@ -22,6 +22,8 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
     @Input() public source: MatTableDataSource<SourceElements>;
     @Input() public dynamicColumns: string[];
     @Input() private isMultipleSelect: boolean;
+
+    @Output() public selectedItems: EventEmitter<any> = new EventEmitter();
 
     @ViewChild(MatPaginator) private paginator: MatPaginator;
     @ViewChild(MatTable) private table: MatTable<any>;
@@ -49,7 +51,13 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
             this.refreshDataSource(changes.source.currentValue);
         }
     }
-    public isAllSelected (): boolean {
+    public isChecked (): boolean {
+        return this.selectionModel.hasValue() && this.isAllSelected();
+    }
+    public isIndeterminate (): boolean {
+        return this.selectionModel.hasValue() && !this.isAllSelected();
+    }
+    private isAllSelected (): boolean {
         return this.selectionModel.selected.length === this.dataSource.data.length;
     }
     private initializeSelectionModel (): void {
