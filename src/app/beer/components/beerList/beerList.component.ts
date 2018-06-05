@@ -12,8 +12,10 @@ import { Subscription } from 'rxjs';
 export class BeerListComponent implements OnInit, OnDestroy {
     private beers: any;
     private beersSubscription: Subscription;
+    public displayedColumns: string[];
     constructor(private beerService: BeerService, private changeDetectorRef: ChangeDetectorRef) {}
     public ngOnInit (): void {
+        this.displayedColumns = ['name', 'brewery'];
         this.retrieveBeerList();
     }
     public ngOnDestroy (): void {

@@ -14,6 +14,7 @@ type SourceElements = {
 })
 export class DatatableComponent implements OnChanges, AfterViewInit {
     @Input() public source: MatTableDataSource<SourceElements>;
+    @Input() public dynamicColumns: string[];
 
     @ViewChild(MatPaginator) private paginator: MatPaginator;
     @ViewChild(MatTable) private table: MatTable<any>;
@@ -41,7 +42,6 @@ export class DatatableComponent implements OnChanges, AfterViewInit {
     private initializeDisplayedColumns (): void {
         const staticBeginningColumns = ['checked'];
         const staticEndingColumns = [];
-        const dynamicColumns = ['name'];
-        this.displayedColumns = [...staticBeginningColumns, ...dynamicColumns, ...staticEndingColumns];
+        this.displayedColumns = [...staticBeginningColumns, ...this.dynamicColumns, ...staticEndingColumns];
     }
 }
