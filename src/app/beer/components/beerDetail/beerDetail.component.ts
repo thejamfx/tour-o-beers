@@ -1,23 +1,23 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+
+import { BeerService } from '../../services/beerService.service';
 import { Beer } from '../../beer.types';
 
 @Component({
-  selector: 'beer-detail',
-  templateUrl: './beerDetail.component.html',
-  styleUrls: ['./beerDetail.component.css']
+    selector: 'beer-detail',
+    templateUrl: './beerDetail.component.html',
+    styleUrls: ['./beerDetail.component.css'],
+    providers: [BeerService]
 })
 export class BeerDetailComponent implements OnInit {
     private beer: Beer;
-    constructor () {}
+    constructor (private route: ActivatedRoute, private location: Location, private beerService: BeerService) {}
     public ngOnInit () {
-        this.beer = {
-            id: 'beer id',
-            name: 'beer name',
-            brewery: 'unknown'
-        };
-    }
-    public onNameChange ($event: any): void {
-        console.log('change happened');
-        console.log(this.beer);
+        const beerId = this.route.snapshot.paramMap.get('id');
+        this.beerService.loadBeerById(beerId).subscribe((beer) => {
+            this.beer = beer;
+        });
     }
 }
