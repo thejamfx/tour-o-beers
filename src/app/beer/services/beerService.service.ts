@@ -47,4 +47,8 @@ export class BeerService {
         const beer = staticBeers.find((beer: Beer) => beer.id === beerId);
         return of(beer);
     }
+    public addBeer (beer: Beer): Promise<any> {
+        staticBeers.push(beer);
+        return Promise.resolve();
+    }
 }
