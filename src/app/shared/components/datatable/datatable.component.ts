@@ -28,7 +28,7 @@ export class DatatableComponent implements OnChanges, AfterViewInit {
         this.columnDefinitions.forEach((columnDefinition) => {
             this.table.addColumnDef(columnDefinition);
         });
-        setTimeout(() => this.displayedColumns = ['checked', 'name']);
+        setTimeout(() => this.initializeDisplayedColumns());
     }
     public ngOnChanges (changes: SimpleChanges) {
         if (changes.source.currentValue) {
@@ -37,5 +37,11 @@ export class DatatableComponent implements OnChanges, AfterViewInit {
     }
     private refreshDataSource (data: any) {
         this.dataSource = this.datatableService.createDataSourceFromData(data, this.paginator);
+    }
+    private initializeDisplayedColumns (): void {
+        const staticBeginningColumns = ['checked'];
+        const staticEndingColumns = [];
+        const dynamicColumns = ['name'];
+        this.displayedColumns = [...staticBeginningColumns, ...dynamicColumns, ...staticEndingColumns];
     }
 }

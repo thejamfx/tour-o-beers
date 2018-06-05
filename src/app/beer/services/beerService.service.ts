@@ -43,6 +43,7 @@ export class BeerService {
         return of(beers);
     }
     public loadBeerById (beerId: string): Observable<Beer> {
+        this.notificationService.addNotification('Loading beer');
         const beer = staticBeers.find((beer: Beer) => beer.id === beerId);
         return of(beer);
     }
