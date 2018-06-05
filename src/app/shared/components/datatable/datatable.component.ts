@@ -2,7 +2,7 @@ import {
     Component, Input, OnInit, OnChanges, SimpleChanges, ViewChild, AfterViewInit,
     ContentChildren, QueryList, ChangeDetectorRef
 } from '@angular/core';
-import { MatPaginator, MatTableDataSource, MatColumnDef, MatTable, MatHeaderRowDef } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatColumnDef, MatTable, MatHeaderRowDef, PageEvent } from '@angular/material';
 import { DatatableService } from '../../services/datatableService.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Beer } from '../../../beer/beer.types';
@@ -31,6 +31,7 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
     public dataSource: MatTableDataSource<SourceElements>;
     public displayedColumns: string[];
     public selectionModel: SelectionModel<Beer>;
+    public pageEvent: PageEvent;
 
     constructor (private changeDetectionRef: ChangeDetectorRef, private datatableService: DatatableService) {}
 

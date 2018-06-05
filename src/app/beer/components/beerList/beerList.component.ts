@@ -11,9 +11,9 @@ import { BeerModalService } from '../../services/beerModalService.service';
     providers: [BeerService, BeerModalService]
 })
 export class BeerListComponent implements OnInit, OnDestroy {
-    private beers: any;
     private beersSubscription: Subscription;
     public displayedColumns: string[];
+    public beers: Beer[];
 
     constructor (private beerService: BeerService, private beerModalService: BeerModalService) {}
 
@@ -30,7 +30,7 @@ export class BeerListComponent implements OnInit, OnDestroy {
     private retrieveBeerList (): void {
         this.beersSubscription = this.beerService.loadBeers().subscribe(this.setBeerList.bind(this));
     }
-    private setBeerList (beers: any): void {
+    private setBeerList (beers: Beer[]): void {
         this.beers = beers;
     }
 }
