@@ -1,20 +1,14 @@
 import { BeerModule } from '../beer.module';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Beer } from '../classes/beer';
-import { Beer as _Beer } from '../beer.types';
+import { Beer } from '../beer.types';
+import { NotificationService } from '../../shared/services/notificationService.service';
 
 @Injectable()
 export class BeerService {
-    constructor () {}
-    public getListOfFields (): any[] {
-        const beer = new Beer();
-        console.log(Object.getOwnPropertyNames(beer));
-        return Object.keys(beer);
-    }
-    public loadBeers (): Observable<_Beer[]> {
-        const beer = new Beer();
-        console.log(Object.keys(beer));
+    constructor (private notificationService: NotificationService) {}
+    public loadBeers (): Observable<Beer[]> {
+        this.notificationService.addNotification('Loading beers');
         const beers = [{
             id: '1',
             name: 'Non Alcoholic Beer',

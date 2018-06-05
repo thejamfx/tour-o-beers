@@ -1,3 +1,7 @@
-<p>
-    beer-form works!
-</p>
+<form>
+    <h3>BEER</h3>
+    <p>ID: {{ beer.id }}</p>
+    <mat-form-field>
+        <input matInput placeholder="Beer Name" name="beer name" [(ngModel)]="beer.name" (change)="onNameChange($event)">
+    </mat-form-field>
+</form>
