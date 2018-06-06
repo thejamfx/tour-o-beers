@@ -64,7 +64,8 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
         const initialSelection = [];
         this.selectionModel = new SelectionModel(this.isMultipleSelect, initialSelection);
     }
-    private refreshDataSource (data: any): void {
+    private refreshDataSource (data: any[] = []): void {
+        console.log(data);
         this.dataSource = this.datatableService.createDataSourceFromData(data, this.paginator);
     }
     private initializeDisplayedColumns (): void {

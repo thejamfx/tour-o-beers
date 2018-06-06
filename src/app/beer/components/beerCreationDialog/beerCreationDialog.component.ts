@@ -23,7 +23,6 @@ export class BeerCreationDialogComponent implements OnInit {
         $event.stopPropagation();
         $event.preventDefault();
         const beer: Beer = {
-            id: '12',
             name: 'Not a beer',
             brewery: 'Not a brewery'
         };

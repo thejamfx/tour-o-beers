@@ -1,4 +1,4 @@
-<data-table [source]="beers" [dynamicColumns]="displayedColumns" [isMultipleSelect]="true">
+<data-table [source]="beers | async" [dynamicColumns]="displayedColumns" [isMultipleSelect]="true">
     <ng-container content>
         <!-- Id Column -->
         <ng-container matColumnDef="id">
