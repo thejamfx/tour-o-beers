@@ -6,14 +6,13 @@ import {
 } from '@angular/material';
 import { NotificationService } from './services/notificationService.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { LookupDirective } from './directives/lookup.directive';
 
 @NgModule({
     imports: [
         CommonModule, MatButtonModule, MatTableModule, MatIconModule, MatPaginatorModule, MatMenuModule, MatCheckboxModule
     ],
-    exports: [DatatableComponent, SpinnerComponent, LookupDirective],
-    declarations: [DatatableComponent, SpinnerComponent, LookupDirective],
+    exports: [DatatableComponent, SpinnerComponent],
+    declarations: [DatatableComponent, SpinnerComponent],
     providers: [NotificationService]
 })
 export class SharedModule { }

@@ -1,9 +1,10 @@
 export type Beer = {
-    name: string,
-    brewery: string,
+    id?: string,
+    name?: string,
+    brewery?: string,
     alcoholByVolumn?: number,
     availability?: string,
-    breweryId: string,
+    breweryId?: string,
     description?: string,
     internationalBitternessUnits?: number,
     standardReferenceMethod?: number

@@ -14,6 +14,7 @@ import { AngularFirestoreCollection } from 'angularfire2/firestore';
 export class BeerListComponent implements OnInit {
     public displayedColumns: string[];
     public beers: Observable<Beer[]>;
+    private selectedBeers: Beer[];
 
     constructor (private beerService: BeerService, private beerModalService: BeerModalService) {}
 
@@ -23,6 +24,17 @@ export class BeerListComponent implements OnInit {
     }
     public openCreationModal (): void {
         this.beerModalService.openModel();
+    }
+    public updateSelectedItems ($event): void {
+        this.selectedBeers = $event; 
+    }
+    public deleteSelected (): void {
+        this.selectedBeers.forEach(async (beer) => {
+            await this.beerService.deleteBeer(beer);
+        });
+    }
+    public hasSelectedItems (): boolean {
+        return this.selectedBeers && this.selectedBeers.length > 0;
     }
     private retrieveBeerList (): void {
         this.beers = this.beerService.loadBeers();

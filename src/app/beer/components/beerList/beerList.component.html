@@ -1,4 +1,4 @@
-<data-table [source]="beers | async" [dynamicColumns]="displayedColumns" [isMultipleSelect]="true">
+<data-table [source]="beers | async" [dynamicColumns]="displayedColumns" [isMultipleSelect]="true" (selectedItems)="updateSelectedItems($event)">
     <ng-container content>
         <!-- Id Column -->
         <ng-container matColumnDef="id">
@@ -22,6 +22,6 @@
     </ng-container>
     <ng-container actions>
         <button mat-menu-item (click)="openCreationModal()">Quick Add Beer</button>
-        <button mat-menu-item>Add Beer</button>
+        <button mat-menu-item (click)="deleteSelected()" [disabled]="!hasSelectedItems()">Delete Selected Beers</button>
     </ng-container>
 </data-table>

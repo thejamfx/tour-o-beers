@@ -1,28 +1,13 @@
 <h1 mat-dialog-title>Quick Add Form</h1>
 <mat-dialog-content>
-    <mat-horizontal-stepper [linear]="true" #stepper>
-        <mat-step [stepControl]="stepOneGroup">
-            <form [formGroup]="stepOneGroup">
-                <ng-template matStepLabel></ng-template>
-                <mat-form-field>
-                    <input matInput placeholder="Beer Name" formControlName="beerNameControl" [(ngModel)]="beer.name" (blur)="stepper.next()" required>
-                </mat-form-field>
-            </form>
-        </mat-step>
-        <mat-step [stepControl]="stepTwoGroup">
-            <form [formGroup]="stepTwoGroup">
-                <ng-template matStepLabel></ng-template>
-                <mat-form-field>
-                    <input matInput placeholder="Brewery Name" formControlName="breweryNameControl" (change)="" [matAutocomplete]="auto" required>
-                    <mat-autocomplete #auto="matAutocomplete" lookup (lookupOptions)="updateOptions($event)">
-                        <mat-option *ngFor="let option of options" [value]="option.name">
-                            <span>{{option.name}}</span>
-                        </mat-option>
-                    </mat-autocomplete>
-                </mat-form-field>
-            </form>
-        </mat-step>
-    </mat-horizontal-stepper>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Beer Name" [(ngModel)]="beer.name" name="name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Brewery Name" [(ngModel)]="beer.brewery" name="brewery" required>
+        </mat-form-field>
+    </form>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-raised-button (click)="save($event)" [disabled]="isSaveDisabled()" color="primary">Save</button>
