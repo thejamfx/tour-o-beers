@@ -1,8 +1,25 @@
 <h1 mat-dialog-title>Quick Add Form</h1>
 <mat-dialog-content>
-    Insert cool quick add form here.
+    <mat-horizontal-stepper [linear]="true" #stepper>
+        <mat-step [stepControl]="stepOneGroup">
+            <form [formGroup]="stepOneGroup">
+                <ng-template matStepLabel>Fill out Beer name</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Beer Name" formControlName="beerNameControl" [(ngModel)]="beer.name" required>
+                </mat-form-field>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="stepTwoGroup">
+            <form [formGroup]="stepTwoGroup">
+                <ng-template matStepLabel>Fill out Brewery</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Brewery Name" formControlName="breweryNameControl" [(ngModel)]="beer.brewery" required>
+                </mat-form-field>
+            </form>
+        </mat-step>
+    </mat-horizontal-stepper>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button (click)="save($event)" color="primary">Save</button>
+    <button mat-raised-button (click)="save($event)" [disabled]="isSaveDisabled()" color="primary">Save</button>
     <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
 </mat-dialog-actions>

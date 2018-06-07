@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
     MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule, MatMenuModule, MatTableModule, MatCheckboxModule,
-    MatDialogModule,
-    MatButtonModule
+    MatDialogModule, MatButtonModule
 } from '@angular/material';
 import { BeerListComponent } from './components/beerList/beerList.component';
 import { BeerFormComponent } from './components/beerForm/beerForm.component';
@@ -15,7 +14,8 @@ import { BeerCreationDialogComponent } from './components/beerCreationDialog/bee
 @NgModule({
     imports: [
         SharedModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule,
-        MatMenuModule, MatTableModule, MatCheckboxModule, RouterModule, MatDialogModule, MatButtonModule
+        MatMenuModule, MatTableModule, MatCheckboxModule, RouterModule, MatDialogModule, MatButtonModule,
+        ReactiveFormsModule
     ],
     exports: [BeerListComponent],
     entryComponents: [BeerCreationDialogComponent],

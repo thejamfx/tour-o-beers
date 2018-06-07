@@ -13,7 +13,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 @NgModule({
     declarations: [AppComponent],
     imports: [
-        BrowserModule, BrowserAnimationsModule, CommonModule, MatSnackBarModule, MatCheckboxModule, NavbarModule, BeerModule, DashboardModule, AppRouterModule
+        BrowserModule, BrowserAnimationsModule, CommonModule, MatSnackBarModule, MatCheckboxModule, NavbarModule, BeerModule,
+        DashboardModule, AppRouterModule
     ],
     bootstrap: [AppComponent]
 })
