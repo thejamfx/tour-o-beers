@@ -1,13 +1,13 @@
-// import { AppRouterModule } from './appRouter.module';
+import { AppRouterModule } from './appRouter.module';
 
-// describe('AppRouterModule', () => {
-//     let appRouterModule: AppRouterModule;
+describe('AppRouterModule', () => {
+    let appRouterModule: AppRouterModule;
 
-//     beforeEach(() => {
-//         appRouterModule = new AppRouterModule();
-//     });
+    beforeEach(() => {
+        appRouterModule = new AppRouterModule();
+    });
 
-//     it('should create an instance', () => {
-//         expect(appRouterModule).toBeTruthy();
-//     });
-// });
+    it('should create an instance', () => {
+        expect(appRouterModule).toBeTruthy();
+    });
+});
