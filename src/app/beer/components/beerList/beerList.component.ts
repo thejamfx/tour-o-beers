@@ -3,7 +3,6 @@ import { BeerService } from '../../services/beerService.service';
 import { Beer } from '../../beer.types';
 import { BeerModalService } from '../../services/beerModalService.service';
 import { Observable } from 'rxjs';
-import { AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Component({
     selector: 'beer-list',

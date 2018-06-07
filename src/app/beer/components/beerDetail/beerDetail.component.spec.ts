@@ -1,6 +1,7 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 // import { BeerDetailComponent } from './beerDetail.component';
+// import { SharedModule } from '../../../shared/shared.module';
 
 // describe('BeerDetailComponent', () => {
 //     let component: BeerDetailComponent;
@@ -8,7 +9,8 @@
 
 //     beforeEach(async (() => {
 //         TestBed.configureTestingModule({
-//         declarations: [ BeerDetailComponent ]
+//             declarations: [ BeerDetailComponent ],
+//             imports: [SharedModule]
 //         })
 //         .compileComponents();
 //     }));
