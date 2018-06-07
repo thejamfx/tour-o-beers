@@ -13,7 +13,7 @@
             <form [formGroup]="stepTwoGroup">
                 <ng-template matStepLabel></ng-template>
                 <mat-form-field>
-                    <input matInput placeholder="Brewery Name" formControlName="breweryNameControl" [(ngModel)]="beer.brewery" [matAutocomplete]="auto" required>
+                    <input matInput placeholder="Brewery Name" formControlName="breweryNameControl" (change)="" [matAutocomplete]="auto" required>
                     <mat-autocomplete #auto="matAutocomplete" lookup (lookupOptions)="updateOptions($event)">
                         <mat-option *ngFor="let option of options" [value]="option.name">
                             <span>{{option.name}}</span>
