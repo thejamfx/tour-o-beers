@@ -14,17 +14,25 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class BeerCreationDialogComponent implements OnInit {
     public stepOneGroup: FormGroup;
     public stepTwoGroup: FormGroup;
-    public beer: any;
+    public beer: Beer;
+    public options: any[];
     constructor(
         private dialogRef: MatDialogRef<BeerCreationDialogComponent>,  private formBuilder: FormBuilder, private beerService: BeerService,
         private notificationService: NotificationService
     ) {}
 
     ngOnInit () {
+        this.initializeBeer();
+        this.initalizeFormGroups();
+    }
+    private initializeBeer (): void {
         this.beer = {
             name: null,
-            brewery: null
+            brewery: null,
+            breweryId: null
         };
+    }
+    private initalizeFormGroups (): void {
         this.stepOneGroup = this.formBuilder.group({
             beerNameControl: ['', Validators.required]
         });
@@ -35,12 +43,15 @@ export class BeerCreationDialogComponent implements OnInit {
     public isSaveDisabled (): boolean {
         return this.beer.name === null || this.beer.brewery === null;
     }
+    public updateOptions (payload: any): void {
+        console.log(payload);
+        this.options = payload;
+    }
 
     public async save ($event: Event): Promise<any> {
         $event.stopPropagation();
         $event.preventDefault();
-        await this.beerService.addBeer(this.beer)
-            .catch(this.notificationService.addNotification.bind(this));
+        await this.beerService.addBeer(this.beer).catch(this.notificationService.addNotification.bind(this));
         this.dialogRef.close();
     }
 }

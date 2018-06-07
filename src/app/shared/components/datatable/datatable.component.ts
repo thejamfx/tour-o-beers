@@ -1,4 +1,4 @@
-import { 
+import {
     Component, Input, OnInit, OnChanges, SimpleChanges, ViewChild, AfterViewInit,
     ContentChildren, QueryList, ChangeDetectorRef, Output, EventEmitter
 } from '@angular/core';
@@ -36,10 +36,12 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
     public pageEvent: PageEvent;
     public showSpinner: boolean;
 
-    constructor (private changeDetectionRef: ChangeDetectorRef, private datatableService: DatatableService) {}
+    constructor (private changeDetectionRef: ChangeDetectorRef, private datatableService: DatatableService) {
+        this.dataSource = new MatTableDataSource<any>();
+        this.showSpinner = true;
+    }
 
     public ngOnInit () {
-        this.showSpinner = true;
         this.initializeSelectionModel();
     }
     public ngAfterViewInit () {

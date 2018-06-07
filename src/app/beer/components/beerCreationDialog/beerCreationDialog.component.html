@@ -3,17 +3,22 @@
     <mat-horizontal-stepper [linear]="true" #stepper>
         <mat-step [stepControl]="stepOneGroup">
             <form [formGroup]="stepOneGroup">
-                <ng-template matStepLabel>Fill out Beer name</ng-template>
+                <ng-template matStepLabel></ng-template>
                 <mat-form-field>
-                    <input matInput placeholder="Beer Name" formControlName="beerNameControl" [(ngModel)]="beer.name" required>
+                    <input matInput placeholder="Beer Name" formControlName="beerNameControl" [(ngModel)]="beer.name" (blur)="stepper.next()" required>
                 </mat-form-field>
             </form>
         </mat-step>
         <mat-step [stepControl]="stepTwoGroup">
             <form [formGroup]="stepTwoGroup">
-                <ng-template matStepLabel>Fill out Brewery</ng-template>
+                <ng-template matStepLabel></ng-template>
                 <mat-form-field>
-                    <input matInput placeholder="Brewery Name" formControlName="breweryNameControl" [(ngModel)]="beer.brewery" required>
+                    <input matInput placeholder="Brewery Name" formControlName="breweryNameControl" [(ngModel)]="beer.brewery" [matAutocomplete]="auto" required>
+                    <mat-autocomplete #auto="matAutocomplete" lookup (lookupOptions)="updateOptions($event)">
+                        <mat-option *ngFor="let option of options" [value]="option.name">
+                            <span>{{option.name}}</span>
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
             </form>
         </mat-step>
