@@ -5,7 +5,8 @@
 // describe('BeerServiceService', () => {
 //     beforeEach(() => {
 //         TestBed.configureTestingModule({
-//             providers: [BeerService]
+//             providers: [BeerService],
+//             imports: []
 //         });
 //     });
 
