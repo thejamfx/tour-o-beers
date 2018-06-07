@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import {
     MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule, MatMenuModule, MatTableModule, MatCheckboxModule,
     MatDialogModule, MatButtonModule
@@ -13,7 +14,7 @@ import { BeerCreationDialogComponent } from './components/beerCreationDialog/bee
 
 @NgModule({
     imports: [
-        SharedModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule,
+        CommonModule, SharedModule, FormsModule, MatStepperModule, MatFormFieldModule, MatInputModule, MatGridListModule,
         MatMenuModule, MatTableModule, MatCheckboxModule, RouterModule, MatDialogModule, MatButtonModule,
         ReactiveFormsModule
     ],

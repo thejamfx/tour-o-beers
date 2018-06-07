@@ -9,12 +9,19 @@ import { NavbarModule } from './navbar/navbar.module';
 import { MatSnackBarModule, MatCheckboxModule } from '@angular/material';
 import { AppRouterModule } from './appRouter.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
-        BrowserModule, BrowserAnimationsModule, CommonModule, MatSnackBarModule, MatCheckboxModule, NavbarModule, BeerModule,
-        DashboardModule, AppRouterModule
+        BrowserModule, BrowserAnimationsModule, CommonModule, AppRouterModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        MatSnackBarModule, MatCheckboxModule,
+        NavbarModule, BeerModule, DashboardModule
     ],
     bootstrap: [AppComponent]
 })

@@ -33,7 +33,6 @@ export class BeerCreationDialogComponent implements OnInit {
         });
     }
     public isSaveDisabled (): boolean {
-        console.log(this.beer);
         return this.beer.name === null || this.beer.brewery === null;
     }
 

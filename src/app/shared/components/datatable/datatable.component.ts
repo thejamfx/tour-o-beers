@@ -34,10 +34,12 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
     public displayedColumns: string[];
     public selectionModel: SelectionModel<Beer>;
     public pageEvent: PageEvent;
+    public showSpinner: boolean;
 
     constructor (private changeDetectionRef: ChangeDetectorRef, private datatableService: DatatableService) {}
 
     public ngOnInit () {
+        this.showSpinner = true;
         this.initializeSelectionModel();
     }
     public ngAfterViewInit () {
@@ -64,7 +66,8 @@ export class DatatableComponent implements OnInit, OnChanges, AfterViewInit {
         const initialSelection = [];
         this.selectionModel = new SelectionModel(this.isMultipleSelect, initialSelection);
     }
-    private refreshDataSource (data: any): void {
+    private refreshDataSource (data: any[] = []): void {
+        this.showSpinner = false;
         this.dataSource = this.datatableService.createDataSourceFromData(data, this.paginator);
     }
     private initializeDisplayedColumns (): void {

@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BeerService } from '../../services/beerService.service';
 import { Beer } from '../../beer.types';
-import { Subscription } from 'rxjs';
 import { BeerModalService } from '../../services/beerModalService.service';
+import { Observable } from 'rxjs';
+import { AngularFirestoreCollection } from 'angularfire2/firestore';
 
 @Component({
     selector: 'beer-list',
@@ -10,10 +11,9 @@ import { BeerModalService } from '../../services/beerModalService.service';
     styleUrls: ['./beerList.component.css'],
     providers: [BeerService, BeerModalService]
 })
-export class BeerListComponent implements OnInit, OnDestroy {
-    private beersSubscription: Subscription;
+export class BeerListComponent implements OnInit {
     public displayedColumns: string[];
-    public beers: Beer[];
+    public beers: Observable<Beer[]>;
 
     constructor (private beerService: BeerService, private beerModalService: BeerModalService) {}
 
@@ -21,16 +21,10 @@ export class BeerListComponent implements OnInit, OnDestroy {
         this.displayedColumns = ['name', 'brewery'];
         this.retrieveBeerList();
     }
-    public ngOnDestroy (): void {
-        this.beersSubscription.unsubscribe();
-    }
     public openCreationModal (): void {
         this.beerModalService.openModel();
     }
     private retrieveBeerList (): void {
-        this.beersSubscription = this.beerService.loadBeers().subscribe(this.setBeerList.bind(this));
-    }
-    private setBeerList (beers: Beer[]): void {
-        this.beers = beers;
+        this.beers = this.beerService.loadBeers();
     }
 }

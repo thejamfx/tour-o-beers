@@ -11,6 +11,7 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<spinner *ngIf="showSpinner"></spinner>
 <div class="datatableComponents">
     <div class="buttonRow">
         <button mat-button [matMenuTriggerFor]="menu">Actions</button>
@@ -19,7 +20,7 @@
         </mat-menu>
     </div>
     <mat-paginator 
-        [length]="dataSource.data.length"
+        [length]="dataSource ? dataSource.data.length : 0"
         [pageSizeOptions]="[5, 10, 20]"
         (page)="pageEvent = $event"
         showFirstLastButtons>
