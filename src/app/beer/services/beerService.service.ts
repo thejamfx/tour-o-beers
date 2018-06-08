@@ -2,17 +2,16 @@ import { BeerModule } from '../beer.module';
 import { Injectable } from '@angular/core';
 import { Beer } from '../beer.types';
 import { NotificationService } from '../../shared/services/notificationService.service';
-import { AngularFirestore, AngularFirestoreCollection, DocumentChangeType, DocumentChangeAction, DocumentSnapshot, Action } from 'angularfire2/firestore';
+import { AngularFirestore, DocumentChangeAction, DocumentSnapshot, Action } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 @Injectable()
 export class BeerService {
     constructor (
         private firestore: AngularFirestore, private notificationService: NotificationService
     ) {}
-    public loadBeers (): Observable<Beer[]> {
-        return this.firestore.collection('beers').snapshotChanges().pipe(
+    public loadBeers (options?: { limit: number }): Observable<Beer[]> {
+        return this.firestore.collection('beers', ref => options ? ref.limit(options.limit) : ref).snapshotChanges().pipe(
             map(this.processSnapshotData.bind(this))
         );
     }
@@ -27,6 +26,7 @@ export class BeerService {
     }
     public createBeer (beer: Beer): Promise<void> {
         const uid = this.firestore.createId();
+        console.log(beer);
         return this.firestore.collection('beers').doc(uid).set(beer)
             .then(() => this.notificationService.addNotification('Added beer'))
             .catch((reason) => this.notificationService.addNotification(reason));

@@ -32,4 +32,7 @@ export class BeerFormComponent {
             this.location.back();
         });
     }
+    public isDisabled (): boolean {
+        return this.beerForm.untouched || this.beerForm.pristine;
+    }
 }

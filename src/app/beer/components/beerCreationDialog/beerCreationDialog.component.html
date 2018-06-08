@@ -7,6 +7,10 @@
         <mat-form-field>
             <input matInput placeholder="Brewery Name" [(ngModel)]="beer.brewery" name="brewery" required>
         </mat-form-field>
+        <div class="uploader">
+            <label>Upload picture of Beer<span class="uploadRequired">*</span></label>
+            <input type="File" (change)="onFileChange($event)">
+        </div>
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>

@@ -9,3 +9,12 @@ mat-dialog-actions {
 mat-form-field {
     width: 75%
 }
+
+.uploader label {
+    margin-right: 10px;
+}
+
+.uploadRequired {
+    margin-left: 5px;
+    color: red;
+}

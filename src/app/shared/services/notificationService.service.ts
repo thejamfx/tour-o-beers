@@ -6,7 +6,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 })
 export class NotificationService {
     constructor (private matSnackBar: MatSnackBar) {}
-    public addNotification (message: string, snackBarActionLabel: string = ''): void { 
+    public addNotification (message: string, snackBarActionLabel: string = ''): void {
         const snackBarOptions = this.buildSnackBarOptions();
         setTimeout(() => this.matSnackBar.open(message, snackBarActionLabel, snackBarOptions));
     }

@@ -1,0 +1,5 @@
+<mat-card *ngFor="let beer of beers">
+    <mat-card-title>{{ beer.name }}</mat-card-title>
+    <mat-card-subtitle>{{ beer.brewery }}</mat-card-subtitle>
+    <img mat-card-image src="{{beer.imgUrl}}">
+</mat-card>
