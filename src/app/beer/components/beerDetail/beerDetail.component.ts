@@ -1,23 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Location } from '@angular/common';
+
+import { BeerService } from '../../services/beerService.service';
 import { Beer } from '../../beer.types';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'beer-detail',
-  templateUrl: './beerDetail.component.html',
-  styleUrls: ['./beerDetail.component.css']
+    selector: 'beer-detail',
+    templateUrl: './beerDetail.component.html',
+    styleUrls: ['./beerDetail.component.css'],
+    providers: [BeerService]
 })
-export class BeerDetailComponent implements OnInit {
-    private beer: Beer;
-    constructor () {}
+export class BeerDetailComponent implements OnInit, OnDestroy {
+    private subscription: Subscription;
+    public beer: Beer;
+    constructor (
+        private route: ActivatedRoute, private location: Location, private beerService: BeerService
+    ) {}
     public ngOnInit () {
-        this.beer = {
-            id: 'beer id',
-            name: 'beer name',
-            brewery: 'unknown'
-        };
+        const beerId = this.route.snapshot.paramMap.get('id');
+        this.subscription = this.beerService.loadBeerById(beerId).subscribe((beer) => {
+            this.beer = beer;
+        });
     }
-    public onNameChange ($event: any): void {
-        console.log('change happened');
-        console.log(this.beer);
+    public ngOnDestroy () {
+        this.subscription.unsubscribe();
     }
 }

@@ -1,1 +1,27 @@
-<data-table [source]="beers"></data-table>
+<data-table [source]="beers | async" [dynamicColumns]="displayedColumns" [isMultipleSelect]="true" (selectedItems)="updateSelectedItems($event)">
+    <ng-container content>
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+        
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> 
+                <a routerLink="/beers/detail/{{element.id}}">{{element.name}}</a>
+            </td>
+        </ng-container>
+        
+        <!-- Brewery Column -->
+        <ng-container matColumnDef="brewery">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Brewery </th>
+            <td mat-cell *matCellDef="let element"> {{element.brewery}} </td>
+        </ng-container>
+    </ng-container>
+    <ng-container actions>
+        <button mat-menu-item (click)="openCreationModal()">Quick Add Beer</button>
+        <button mat-menu-item (click)="deleteSelected()" [disabled]="!hasSelectedItems()">Delete Selected Beers</button>
+    </ng-container>
+</data-table>

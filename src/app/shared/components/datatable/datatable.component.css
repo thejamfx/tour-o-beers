@@ -1,7 +1,15 @@
 .datatable {
     width: 100%;
 }
+
 .buttonRow {
     float: left;
     padding: 10px 0 0 10px;
+}
+
+.spinnerContainer {
+    height: 100%;
+    width: 100%;
+    float: left;
+    background-color: white;
 }
