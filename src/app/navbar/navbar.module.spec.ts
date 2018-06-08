@@ -1,13 +1,13 @@
 import { NavbarModule } from './navbar.module';
 
 describe('NavbarModule', () => {
-  let navbarModule: NavbarModule;
+    let navbarModule: NavbarModule;
 
-  beforeEach(() => {
-    navbarModule = new NavbarModule();
-  });
+    beforeEach(() => {
+        navbarModule = new NavbarModule();
+    });
 
-  it('should create an instance', () => {
-    expect(navbarModule).toBeTruthy();
-  });
+    it('should create an instance', () => {
+        expect(navbarModule).toBeTruthy();
+    });
 });

@@ -1,0 +1,23 @@
+.title {
+    font-weight: 600;
+    margin: 0 40px 0 0;
+    padding: 0 0 0 10px;
+}
+
+nav a {
+    font-family: sans-serif;
+    color: whitesmoke;
+    user-select: none;
+}
+
+nav .links a {
+    margin-right: 20px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+mat-toolbar {
+    border-bottom: 1mm solid #6176eb;
+}

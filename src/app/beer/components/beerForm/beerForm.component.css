@@ -1,0 +1,11 @@
+form {
+    margin: 20px 20px 20px 20px;
+}
+
+.formActions button {
+    margin-right: 15px;
+}
+
+mat-form-field {
+    width: 70%;
+}
