@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Quick Add Form</h1>
+<mat-dialog-content>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder="Beer Name" [(ngModel)]="beer.name" name="name" required>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Brewery Name" [(ngModel)]="beer.brewery" name="brewery" required>
+        </mat-form-field>
+        <div class="uploader">
+            <label>Upload picture of Beer<span class="uploadRequired">*</span></label>
+            <input type="File" (change)="onFileChange($event)">
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button (click)="save($event)" [disabled]="isSaveDisabled()" color="primary">Save</button>
+    <button mat-raised-button mat-dialog-close color="warn">Cancel</button>
+</mat-dialog-actions>
