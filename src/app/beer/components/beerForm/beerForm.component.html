@@ -1,0 +1,30 @@
+<form #beerForm="ngForm">
+    <mat-form-field>
+        <mat-label>Beer Name</mat-label>
+        <input type="text" matInput placeholder="Beer Name" name="name" [(ngModel)]="beer.name" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Brewery</mat-label>
+        <input type="text" matInput placeholder="Brewery" name="brewery" [(ngModel)]="beer.brewery" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Alcohol By Volumn (ABV)</mat-label>
+        <input type="number" matInput placeholder="ABV" name="abv" [(ngModel)]="beer.alcoholByVolumn">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>International Bitterness Units (IBU)</mat-label>
+        <input type="number" matInput placeholder="International Bitterness Units" name="ibu" [(ngModel)]="beer.internationalBitternessUnits">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Standard Reference Method (SRM)</mat-label>
+        <input type="number" matInput placeholder="Standard Reference Method" name="srm" [(ngModel)]="beer.standardReferenceMethod">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea type="text" matInput placeholder="Description" name="description" [(ngModel)]="beer.description"></textarea>
+    </mat-form-field>
+    <div class="formActions">
+        <button mat-raised-button (click)="save($event)" [disabled]="isDisabled()" color="primary">Update</button>
+        <button mat-raised-button (click)="delete($event)" color="warn">Delete</button>
+    </div>
+</form>
